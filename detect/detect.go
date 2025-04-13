@@ -63,6 +63,8 @@ type Detector struct {
 	// commitMap is used to keep track of commits that have been scanned.
 	// This is only used for logging purposes and git scans.
 	commitMap map[string]bool
+	// commitMapMutex protects the commitMap
+	commitMapMutex sync.Mutex
 
 	// findingMutex is to prevent concurrent access to the
 	// findings slice when adding findings.
@@ -123,6 +125,7 @@ type Fragment struct {
 func NewDetector(cfg config.Config) *Detector {
 	return &Detector{
 		commitMap:      make(map[string]bool),
+		commitMapMutex: sync.Mutex{},
 		gitleaksIgnore: make(map[string]struct{}),
 		findingMutex:   &sync.Mutex{},
 		findings:       make([]report.Finding, 0),
@@ -618,12 +621,21 @@ func (d *Detector) AddFinding(finding report.Finding) {
 	d.findingMutex.Unlock()
 }
 
-// Findings returns the findings added to the detector
+// Findings returns a copy of the findings slice in a thread-safe manner.
 func (d *Detector) Findings() []report.Finding {
-	return d.findings
+	d.findingMutex.Lock()
+	defer d.findingMutex.Unlock()
+
+	// Create a copy to return
+	findingsCopy := make([]report.Finding, len(d.findings))
+	copy(findingsCopy, d.findings)
+
+	return findingsCopy
 }
 
 // AddCommit synchronously adds a commit to the commit slice
 func (d *Detector) addCommit(commit string) {
+	d.commitMapMutex.Lock()
+	defer d.commitMapMutex.Unlock()
 	d.commitMap[commit] = true
 }
