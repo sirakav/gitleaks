@@ -1,14 +1,15 @@
 package main
 
 import (
-	"golang.org/x/exp/slices"
 	"os"
 	"text/template"
 
-	"github.com/zricethezav/gitleaks/v8/cmd/generate/config/base"
-	"github.com/zricethezav/gitleaks/v8/cmd/generate/config/rules"
-	"github.com/zricethezav/gitleaks/v8/config"
-	"github.com/zricethezav/gitleaks/v8/logging"
+	"golang.org/x/exp/slices"
+
+	"github.com/sirakav/gitleaks/v8/cmd/generate/config/base"
+	"github.com/sirakav/gitleaks/v8/cmd/generate/config/rules"
+	"github.com/sirakav/gitleaks/v8/config"
+	"github.com/sirakav/gitleaks/v8/logging"
 )
 
 const (

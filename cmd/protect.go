@@ -6,11 +6,11 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/zricethezav/gitleaks/v8/cmd/scm"
-	"github.com/zricethezav/gitleaks/v8/detect"
-	"github.com/zricethezav/gitleaks/v8/logging"
-	"github.com/zricethezav/gitleaks/v8/report"
-	"github.com/zricethezav/gitleaks/v8/sources"
+	"github.com/sirakav/gitleaks/v8/cmd/scm"
+	"github.com/sirakav/gitleaks/v8/detect"
+	"github.com/sirakav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/report"
+	"github.com/sirakav/gitleaks/v8/sources"
 )
 
 func init() {

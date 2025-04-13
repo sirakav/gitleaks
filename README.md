@@ -11,13 +11,13 @@
 [license]: ./LICENSE
 [badge-license]: https://img.shields.io/github/license/gitleaks/gitleaks.svg
 [go-docs-badge]: https://pkg.go.dev/badge/github.com/gitleaks/gitleaks/v8?status
-[go-docs]: https://pkg.go.dev/github.com/zricethezav/gitleaks/v8
+[go-docs]: https://pkg.go.dev/github.com/sirakav/gitleaks/v8
 [badge-build]: https://github.com/gitleaks/gitleaks/actions/workflows/test.yml/badge.svg
 [build]: https://github.com/gitleaks/gitleaks/actions/workflows/test.yml
 [go-report-card-badge]: https://goreportcard.com/badge/github.com/gitleaks/gitleaks/v8
 [go-report-card]: https://goreportcard.com/report/github.com/gitleaks/gitleaks/v8
-[dockerhub]: https://hub.docker.com/r/zricethezav/gitleaks
-[dockerhub-badge]: https://img.shields.io/docker/pulls/zricethezav/gitleaks.svg
+[dockerhub]: https://hub.docker.com/r/sirakav/gitleaks
+[dockerhub-badge]: https://img.shields.io/docker/pulls/sirakav/gitleaks.svg
 [gitleaks-action]: https://github.com/gitleaks/gitleaks-action
 [gitleaks-badge]: https://img.shields.io/badge/protected%20by-gitleaks-blue
 [gitleaks-playground-badge]: https://img.shields.io/badge/gitleaks%20-playground-blue
@@ -71,8 +71,8 @@ Gitleaks can be installed using Homebrew, Docker, or Go. Gitleaks is also availa
 brew install gitleaks
 
 # Docker (DockerHub)
-docker pull zricethezav/gitleaks:latest
-docker run -v ${path_to_host_folder_to_scan}:/path zricethezav/gitleaks:latest [COMMAND] [OPTIONS] [SOURCE_PATH]
+docker pull sirakav/gitleaks:latest
+docker run -v ${path_to_host_folder_to_scan}:/path sirakav/gitleaks:latest [COMMAND] [OPTIONS] [SOURCE_PATH]
 
 # Docker (ghcr.io)
 docker pull ghcr.io/gitleaks/gitleaks:latest
@@ -183,7 +183,7 @@ Use "gitleaks [command] --help" for more information about a command.
 ### Commands
 
 ⚠️ v8.19.0 introduced a change that deprecated `detect` and `protect`. Those commands are still available but
-are hidden in the `--help` menu. Take a look at this [gist](https://gist.github.com/zricethezav/b325bb93ebf41b9c0b0507acf12810d2) for easy command translations.
+are hidden in the `--help` menu. Take a look at this [gist](https://gist.github.com/sirakav/b325bb93ebf41b9c0b0507acf12810d2) for easy command translations.
 If you find v8.19.0 broke an existing command (`detect`/`protect`), please open an issue.
 
 There are three scanning modes: `git`, `dir`, and `stdin`.

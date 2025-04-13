@@ -8,8 +8,8 @@ import (
 
 	"github.com/spf13/viper"
 
-	"github.com/zricethezav/gitleaks/v8/logging"
-	"github.com/zricethezav/gitleaks/v8/regexp"
+	"github.com/sirakav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/regexp"
 )
 
 //go:embed gitleaks.toml

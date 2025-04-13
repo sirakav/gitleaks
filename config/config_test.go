@@ -2,15 +2,16 @@ package config
 
 import (
 	"fmt"
-	"github.com/google/go-cmp/cmp/cmpopts"
 	"testing"
+
+	"github.com/google/go-cmp/cmp/cmpopts"
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/zricethezav/gitleaks/v8/regexp"
+	"github.com/sirakav/gitleaks/v8/regexp"
 )
 
 const configPath = "../testdata/config/"

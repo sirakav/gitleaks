@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/zricethezav/gitleaks/v8/regexp"
+	"github.com/sirakav/gitleaks/v8/regexp"
 )
 
 // Rules contain information that define details on how to detect secrets

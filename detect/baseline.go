@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/zricethezav/gitleaks/v8/report"
+	"github.com/sirakav/gitleaks/v8/report"
 )
 
 func IsNew(finding report.Finding, baseline []report.Finding) bool {

@@ -8,9 +8,9 @@ import (
 	"testing"
 	"testing/iotest"
 
+	"github.com/sirakav/gitleaks/v8/report"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/zricethezav/gitleaks/v8/report"
 )
 
 const secret = "AKIAIRYLJVKMPEGZMPJS"
