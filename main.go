@@ -4,8 +4,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/zricethezav/gitleaks/v8/cmd"
-	"github.com/zricethezav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/cmd"
+	"github.com/sirakav/gitleaks/v8/logging"
 )
 
 func main() {

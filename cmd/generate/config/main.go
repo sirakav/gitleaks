@@ -5,10 +5,10 @@ import (
 	"os"
 	"text/template"
 
-	"github.com/zricethezav/gitleaks/v8/cmd/generate/config/base"
-	"github.com/zricethezav/gitleaks/v8/cmd/generate/config/rules"
-	"github.com/zricethezav/gitleaks/v8/config"
-	"github.com/zricethezav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/cmd/generate/config/base"
+	"github.com/sirakav/gitleaks/v8/cmd/generate/config/rules"
+	"github.com/sirakav/gitleaks/v8/config"
+	"github.com/sirakav/gitleaks/v8/logging"
 )
 
 const (

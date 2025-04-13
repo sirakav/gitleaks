@@ -18,7 +18,7 @@ give it a :thumbsup: on the PR description.
 
 ## Adding new Gitleaks rules
 
-If you want to add a new rule to the [default Gitleaks configuration](https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml) then follow these steps.
+If you want to add a new rule to the [default Gitleaks configuration](https://github.com/sirakav/gitleaks/blob/master/config/gitleaks.toml) then follow these steps.
 
 1. Create a `cmd/generate/config/rules/{provider}.go` file.
    This file is used to generate a new Gitleaks rule.
@@ -60,7 +60,7 @@ If you want to add a new rule to the [default Gitleaks configuration](https://gi
    This file should be fairly self-explanatory except for a few items;
    regex and secret generation. To help with maintence, _most_ rules should
    be uniform. The functions,
-   [`GenerateSemiGenericRegex`](https://github.com/zricethezav/gitleaks/blob/master/cmd/generate/config/rules/rule.go#L31) and [`GenerateUniqueTokenRegex`](https://github.com/zricethezav/gitleaks/blob/master/cmd/generate/config/rules/rule.go#L44) will generate rules
+   [`GenerateSemiGenericRegex`](https://github.com/sirakav/gitleaks/blob/master/cmd/generate/config/rules/rule.go#L31) and [`GenerateUniqueTokenRegex`](https://github.com/sirakav/gitleaks/blob/master/cmd/generate/config/rules/rule.go#L44) will generate rules
    that follow defined patterns.
 
    The function signatures look like this:

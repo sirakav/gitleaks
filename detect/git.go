@@ -12,10 +12,10 @@ import (
 
 	"github.com/gitleaks/go-gitdiff/gitdiff"
 
-	"github.com/zricethezav/gitleaks/v8/cmd/scm"
-	"github.com/zricethezav/gitleaks/v8/logging"
-	"github.com/zricethezav/gitleaks/v8/report"
-	"github.com/zricethezav/gitleaks/v8/sources"
+	"github.com/sirakav/gitleaks/v8/cmd/scm"
+	"github.com/sirakav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/report"
+	"github.com/sirakav/gitleaks/v8/sources"
 )
 
 func (d *Detector) DetectGit(ctx context.Context, cmd *sources.GitCmd, remote *RemoteInfo) ([]report.Finding, error) {

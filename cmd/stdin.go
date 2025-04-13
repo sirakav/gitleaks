@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/zricethezav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/logging"
 )
 
 func init() {

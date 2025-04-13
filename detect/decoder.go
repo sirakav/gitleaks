@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"unicode"
 
-	"github.com/zricethezav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/logging"
 )
 
 var b64LikelyChars [128]byte
