@@ -10,9 +10,9 @@ import (
 
 	"github.com/h2non/filetype"
 
-	"github.com/zricethezav/gitleaks/v8/logging"
-	"github.com/zricethezav/gitleaks/v8/report"
-	"github.com/zricethezav/gitleaks/v8/sources"
+	"github.com/sirakav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/report"
+	"github.com/sirakav/gitleaks/v8/sources"
 )
 
 const maxPeekSize = 25 * 1_000 // 10kb

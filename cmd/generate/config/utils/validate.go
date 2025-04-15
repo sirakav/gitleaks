@@ -7,10 +7,10 @@ package utils
 import (
 	"strings"
 
-	"github.com/zricethezav/gitleaks/v8/cmd/generate/config/base"
-	"github.com/zricethezav/gitleaks/v8/config"
-	"github.com/zricethezav/gitleaks/v8/detect"
-	"github.com/zricethezav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/cmd/generate/config/base"
+	"github.com/sirakav/gitleaks/v8/config"
+	"github.com/sirakav/gitleaks/v8/detect"
+	"github.com/sirakav/gitleaks/v8/logging"
 )
 
 func Validate(rule config.Rule, truePositives []string, falsePositives []string) *config.Rule {

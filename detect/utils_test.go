@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/zricethezav/gitleaks/v8/cmd/scm"
-	"github.com/zricethezav/gitleaks/v8/report"
+	"github.com/sirakav/gitleaks/v8/cmd/scm"
+	"github.com/sirakav/gitleaks/v8/report"
 )
 
 func Test_createScmLink(t *testing.T) {

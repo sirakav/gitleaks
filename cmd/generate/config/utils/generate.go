@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/zricethezav/gitleaks/v8/regexp"
+	"github.com/sirakav/gitleaks/v8/regexp"
 )
 
 const (

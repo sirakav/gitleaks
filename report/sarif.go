@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/zricethezav/gitleaks/v8/config"
+	"github.com/sirakav/gitleaks/v8/config"
 )
 
 type SarifReporter struct {

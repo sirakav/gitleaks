@@ -8,7 +8,7 @@ import (
 
 	"github.com/fatih/semgroup"
 
-	"github.com/zricethezav/gitleaks/v8/logging"
+	"github.com/sirakav/gitleaks/v8/logging"
 )
 
 type ScanTarget struct {
