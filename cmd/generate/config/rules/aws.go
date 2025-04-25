@@ -47,3 +47,84 @@ func AWS() *config.Rule {
 	}
 	return utils.Validate(r, tps, fps)
 }
+
+
+func AWSSecretKey() *config.Rule {
+	// define rule
+	r := config.Rule{
+		RuleID:      "aws-secret-key",
+		Description: "Identified a potential AWS Secret Access Key. Leaking these keys can lead to unauthorized access to your AWS account, data breaches, and significant security risks.",
+		Regex:       regexp.MustCompile(`\b([A-Z0-9+/]{40})\b`),
+		Entropy:     4.5, // High confidence due to specific format
+		Keywords: []string{
+			// Underscore versions
+			"aws_secret_access_key",
+			"aws_secret",
+			"secret_access_key",
+			"access_key_secret",
+			// No separator versions
+			"awssecret",
+			"awssecretkey",
+			"SecretAccessKey", // Used in AWS credentials files (case-sensitive usually, but keyword matching is case-insensitive)
+			// Hyphen versions
+			"aws-secret-access-key",
+			"aws-secret",
+			"secret-access-key",
+			"access-key-secret",
+		},
+		Allowlists: []*config.Allowlist{
+			{
+				StopWords: []string{
+					"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY", // Common example key
+				},
+				Description: "Allow common AWS example secret key",
+			},
+			// Add more specific allowlists if needed based on actual FPs
+		},
+	}
+
+	// validate
+	tps := []string{
+		// Basic match with underscore keyword
+		utils.GenerateSampleSecret("aws_secret", secrets.NewSecret(`[A-Z0-9+/]{40}`)),
+		// Specific valid-looking key (not the common example) with underscore
+		`secret_access_key="wJalrXUtnFEMI/K7MDENG/bPxRfiCYSECRETKEY"`, // gitleaks:allow
+		// Another random-like key with no separator keyword
+		`awssecret=TY07k/hSnaU4KV/0Dyh6SjF/QoaR73lfWeLIL7bO`, // gitleaks:allow
+		// Embedded in JSON/YAML with standard AWS keyword
+		`"SecretAccessKey": "Vphb0b+C/1mHnUSWe/4QHsepLEXhY1EEGAj/6aCS"`, // gitleaks:allow
+		// Key alone surrounded by spaces/boundaries
+		` wJalrXUtnFEMI/K7MDENG/bPxRfiCYSECRETKEY `, // gitleaks:allow
+
+		// --- Examples with hyphens ---
+		// Basic match with hyphen keyword
+		utils.GenerateSampleSecret("aws-secret", secrets.NewSecret(`[A-Z0-9+/]{40}`)),
+		// Specific valid-looking key with hyphen
+		`secret-access-key="wJalrXUtnFEMI/K7MDENG/bPxRfiCYSECRETKEY"`, // gitleaks:allow
+		// Another random-like key with hyphen keyword
+		`aws-secret-access-key: TY07k/hSnaU4KV/0Dyh6SjF/QoaR73lfWeLIL7bO`, // gitleaks:allow
+	}
+	fps := []string{
+		// Too short
+		`aws_secret_key=` + secrets.NewSecret(`[A-Z0-9+/]{39}`),
+		// Too long
+		`aws-secret-key=` + secrets.NewSecret(`[A-Z0-9+/]{41}`), // Added hyphen variation
+		// Invalid characters (lowercase 'w', hyphen)
+		`aws_secret_access_key="wjalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"`,
+		`aws-secret-access-key="wJalrXUtnFEMI-K7MDENG/bPxRfiCYEXAMPLEKEY"`, // Added hyphen variation
+		// Example key (should be caught by rule allowlist)
+		`AWS_SECRET_ACCESS_KEY="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"`, // gitleaks:allow
+		// Low entropy (should be caught by global allowlist)
+		`aws_secret_key="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"`, // gitleaks:allow
+		// Access Key ID (should be caught by the *other* AWS rule)
+		`AWS_ACCESS_KEY_ID="AKIAIOSFODNN7EXAMPLE"`, // gitleaks:allow
+		// Part of a longer string (should fail boundary checks)
+		`somestringwJalrXUtnFEMI/K7MDENG/bPxRfiCYSECRETKEYanotherstring`,
+		`wJalrXUtnFEMI/K7MDENG/bPxRfiCYSECRETKEYanotherstring`,
+		`somestringwJalrXUtnFEMI/K7MDENG/bPxRfiCYSECRETKEY`,
+		// Common Base64 string that might otherwise match length but not format/entropy usually
+		`Zm9vYmFyYmF6Zm9vYmFyYmF6Zm9vYmFyYmF6`, // "foobarbazfoobarbazfoobarbazfoobarbaz"
+	}
+
+	return utils.Validate(r, tps, fps)
+}
